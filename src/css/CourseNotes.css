@@ -1,0 +1,39 @@
+
+.notesIcon{
+
+    cursor: pointer;
+}
+
+.videoSection{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.videoList{
+    /* border: 2px solid green; */
+    height: auto;
+    display: flex; 
+   width: 100%;
+   flex-wrap: wrap;
+justify-content: space-evenly;
+row-gap: 1rem
+  
+}
+
+.videoFrame{
+    /* border: 2px solid red; */
+    height: 370px;
+    width: 600px;
+    flex-wrap: wrap;
+  
+
+}
+
+
+.notesTitle{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
