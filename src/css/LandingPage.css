@@ -1,0 +1,150 @@
+.Projectname {
+
+    font-size: 20px;
+    font-weight: 700;
+    font-family: Lucida Handwriting;
+    background-image: linear-gradient(to left, #553c9a, #b393d3);
+    color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+    
+  }
+  .origin {
+  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    background-image: url("../images/Background.png");
+    background-size: cover;
+  }
+  .SignIn {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+  .SignUp {
+    display: flex;
+    width: 100%;
+    height: 100%;
+     border-radius: 3px;
+     justify-content: center;
+     align-items: center;
+    /* border: 2px solid green; */
+  }
+  .MuiFormHelperText-root {
+    color: #ff001c !important;
+  }
+  .Box2 {
+    /* position: absolute; */
+    /* top: 20%; */
+    /* left: 35%; */
+    height: 75%;
+    width: 28%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+     background:#F2F5F5 0% 0% no-repeat padding-box;
+    box-shadow: 0px 5px 15px #00000029;
+    border: 1px solid #e4e4e4;
+    /* border: 1px solid #e72222; */
+    border-radius: 10px;
+    margin-right: 10%;
+  }
+  .Box3 {
+    height: 85vh;
+    width: 30vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* UI Properties */
+    background: #F2F5F5 0% 0% no-repeat padding-box;
+    box-shadow: 0px 5px 15px #00000029;
+    /* border: 1px solid #e4e4e4; */
+      /* border: 1px solid #08fa91;  */
+    border-radius: 6px;
+    opacity: 1;
+  }
+  .loginbutton.signupbutton {
+    margin-top: 20px;
+    background: #1c266e;
+    border-radius: 6px;
+    box-shadow: #5e5df0 0 10px 20px -10px;
+    box-sizing: border-box;
+    color: #ffffff;
+    cursor: pointer;
+    font-family: Inter, Helvetica, "Apple Color Emoji", "Segoe UI Emoji",
+      NotoColorEmoji, "Noto Color Emoji", "Segoe UI Symbol", "Android Emoji",
+      EmojiSymbols, -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue",
+      "Noto Sans", sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 24px;
+    opacity: 1;
+    outline: 0 solid transparent;
+    padding: 8px 18px;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    width: 37.5%;
+    word-break: break-word;
+  }
+  .forgotpassbutton:hover {
+    transform-origin: right bottom;
+    color: #1c266e;
+    transform: scale(1.1);
+  }
+  .cancelbutton {
+    cursor: pointer;
+    margin-left: 100%;
+    margin-top: -50px;
+  }
+  .cancelbutton:hover {
+    transform: scale(1.1);
+    color: rgb(150, 20, 20);
+  }
+  .cancelbutton2 {
+    cursor: pointer;
+    margin-left: 100%;
+    margin-top: -25px;
+  }
+  .cancelbutton2:hover {
+    color: rgb(150, 20, 20);
+    transform: scale(1.1);
+  }
+  .cancelbutton3 {
+    cursor: pointer;
+    margin-left: 100%;
+    margin-top: -25px;
+  }
+  .cancelbutton3:hover {
+    color: rgb(150, 20, 20);
+    transform: scale(1.1);
+  }
+  .fc {
+    width: 100%;
+  }
+  @media screen and (max-width: 768px) {
+    .Box2, .Box3 {
+      width: 80%;
+      left: 10%;
+    }
+    
+    .loginbutton.signupbutton {
+      width: 80%;
+    }
+  }
+  @media screen and (max-width: 768px) {
+    .Box2, .Box3 {
+      width: 80%;
+      left: 10%;
+    }
+    
+    .loginbutton.signupbutton {
+      width: 80%;
+    }
+  }
