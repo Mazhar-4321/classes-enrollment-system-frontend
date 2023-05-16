@@ -1,0 +1,170 @@
+.originForCourseDetails {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #8739F9;
+    height: 100vh;
+    width: 100vw;
+  }
+  
+  .main-bookcontainer {
+    display: flex;
+    width: 70vw;
+    height: 75vh;
+    border-radius: 20px;
+    background-color: #F5F5F5;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+  }
+  
+  .book-button button:hover {
+    background-color: #1c266e;
+  
+  }
+  
+  .right-content {
+    /* border: 2px solid red; */
+    margin-top: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 60%;
+  }
+  
+  .title {
+    font-weight: bold;
+    font-size: 24px;
+  }
+  
+  .auther {
+    font-size: 20px;
+    color: #a38f92;
+  }
+  
+  .lastDateText{
+    color: #a38f92;
+    font-size: 17px;
+    display: inline-block;
+  }
+  
+  .seatsLeftText {
+    color: #a38f92;
+    font-size: 16px;
+    display: inline-block;
+  }
+  
+  .feeText {
+    color: #a38f92;
+    font-size: 16px;
+    display: inline-block;
+  }
+  
+  .book-description {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  
+  .detail {
+    color: #807577;
+  }
+  
+  .descrip {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  
+  .headings {
+    display: flex;
+    margin-top: 20px;
+    font: normal normal normal 15px/30px Roboto;
+    letter-spacing: 0px;
+    opacity: 1;
+    height: 8px;
+    display: flex;
+    justify-content: center;
+    align-self: flex-start;
+  }
+  
+  .img-Book {
+    /* border: 2px solid rgb(16, 224, 82); */
+    height: 70%;
+    width: 60%;
+    margin-top: 1rem;
+    border-radius: 10px;
+    /* border: 1px solid rgb(143, 131, 131); */
+  
+  }
+  
+  .left-side {
+    display: flex;
+    row-gap: 2rem;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    /* border: 2px solid red; */
+      width: 40%;
+  }
+  
+  .right-content hr {
+    height: 1px;
+    background-color: rgb(126, 112, 112);
+    border: none;
+    width: 90%;
+    margin-right: 5rem;
+  }
+  
+  
+  
+  
+  
+  @media screen and (max-width: 1024px) {
+    .main-bookcontainer {
+    width: 90vw;
+    }
+    
+    .right-content {
+    width: 70%;
+    }
+    
+    .img-Book {
+    width: 50%;
+    }
+    
+    .left-side {
+    width: 50%;
+    }
+    }
+    
+    @media screen and (max-width: 768px) {
+    .main-bookcontainer {
+    height: auto;
+    flex-direction: column;
+    }
+    
+    .right-content {
+    width: 100%;
+    margin-top: 1rem;
+    }
+    
+    .img-Book {
+    height: 50%;
+    width: 80%;
+    margin-top: 0;
+    margin-bottom: 1rem;
+    }
+    
+    .left-side {
+    width: 100%;
+    }
+    }
+    
+    @media screen and (max-width: 480px) {
+    .right-content {
+    font-size: 0.8rem;
+    }
+    
+    .headings {
+    font-size: 0.8rem;
+    }
+    }
