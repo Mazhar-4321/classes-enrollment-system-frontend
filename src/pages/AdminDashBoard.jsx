@@ -11,7 +11,6 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import ApproveCourseCertificateRequest from '../components/ApproveCourseCertificateRequest';
 import DashBoard from './DashBoard';
-import "../css/AdminDashBoard.css"
 
 
 

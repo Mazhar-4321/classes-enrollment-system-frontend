@@ -46,7 +46,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
 });
 export const CourseNotes = () => {
   const [sampleurl, setsampleurl] = useState([]);
-  const myState = useSelector((state) => state.CourseReducer);
+  const myState = useSelector((state) => state.CourseReducer1);
   const dispatch = useDispatch();
   const location = useLocation();
   const navigate = useNavigate();

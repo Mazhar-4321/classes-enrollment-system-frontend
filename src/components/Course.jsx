@@ -17,7 +17,7 @@ const Alert = React.forwardRef(function Alert(props, ref) {
 export const Course = (props) => {
     console.log("props", props);
    
-    const myState = useSelector(state => state.CourseReducer)
+    const myState = useSelector(state => state.CourseReducer1)
     const [snackbar, setSnackbar] = useState(false)
     const [snackbarMessage,setSnackbarMessage]=useState('')
     const [snackbarSeverity,setSnackbarSeverity]=useState('')
@@ -36,7 +36,7 @@ export const Course = (props) => {
         // alert(props.name)
         switch (props.choice) {
             case 'Available Courses':
-                if (myState.coursesEnrolled.has(props.id)) {
+                if (myState.coursesEnrolled.size>0&&myState.coursesEnrolled.has(props.id)) {
                     setSnackbar(true)
                     return
                 }

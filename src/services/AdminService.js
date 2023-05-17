@@ -7,7 +7,7 @@ const baseURL = 'http://localhost:3005/api/v1/'
 
 export const uploadCourse = async (obj, imagesLink) => {
     console.log("WE ARE IN UPLOAD COURSE AXIOS---->",obj)
-    const state = store.getState().CourseReducer;
+    const state = store.getState().CourseReducer1;
     obj.notes = imagesLink
     var date = obj.lastDayToEnroll;
     var year = new Date(date).getFullYear()
@@ -46,7 +46,7 @@ export const uploadCourse = async (obj, imagesLink) => {
 
 export const updateCourse = async (obj, imagesLink, courseId) => {
     console.log("====== IN  UPDATE COURSE AXIOS=====")
-    const state = store.getState().CourseReducer;
+    const state = store.getState().CourseReducer1;
     obj.notes = imagesLink
     var date = obj.lastDayToEnroll;
     var year = new Date(date).getFullYear()
@@ -84,7 +84,7 @@ export const updateCourse = async (obj, imagesLink, courseId) => {
 }
 export const getMyCourses = async () => {
     console.log("get My Courses Reached")
-    const state = store.getState().CourseReducer;
+    const state = store.getState().CourseReducer1;
     console.log(state)
     try {
         let response = await axios.get(`${baseURL}/admins/courses/${state.userDetails.email}`, {
@@ -102,7 +102,7 @@ export const getMyCourses = async () => {
 
 export const getDashboardData = async () => {
     console.log("IN GET DASHBOARD DATA------------->")
-    const state = store.getState().CourseReducer;
+    const state = store.getState().CourseReducer1;
     console.log(state)
     try {
         let response = await axios.get(`${baseURL}/admins/dashboard/${state.userDetails.email}`, {
@@ -120,7 +120,7 @@ export const getDashboardData = async () => {
 
 export const getDashboardDatabox = async () => {
     console.log("IN GET DASHBOARD DATA BOX------------->")
-    const state = store.getState().CourseReducer;
+    const state = store.getState().CourseReducer1;
     console.log(state)
     try {
         let response = await axios.get(`${baseURL}/admins/dashboardbox/${state.userDetails.email}`, {
@@ -138,7 +138,7 @@ export const getDashboardDatabox = async () => {
 
 export const getDashboardDatabox2 = async () => {
     console.log("IN GET DASHBOARD DATA BOX2------------->")
-    const state = store.getState().CourseReducer;
+    const state = store.getState().CourseReducer1;
     console.log(state)
     try {
         let response = await axios.get(`${baseURL}/admins/dashboardbox2/${state.userDetails.email}`, {
@@ -156,7 +156,7 @@ export const getDashboardDatabox2 = async () => {
 
 export const getDashboardDatabox3 = async () => {
     console.log("IN GET DASHBOARD DATA BOX3------------->")
-    const state = store.getState().CourseReducer;
+    const state = store.getState().CourseReducer1;
     console.log(state)
     try {
         let response = await axios.get(`${baseURL}/admins/dashboardbox3/${state.userDetails.email}`, {
@@ -185,7 +185,7 @@ export const getDashboardDatabox3 = async () => {
 
 export const getCourseById = async (courseId) => {
     // /courseById/:id
-    const state = store.getState().CourseReducer;
+    const state = store.getState().CourseReducer1;
     try {
         let response = await axios.get(`${baseURL}/admins/courseById/${courseId}`, {
             headers: {
@@ -200,7 +200,7 @@ export const getCourseById = async (courseId) => {
     }
 }
 export const deleteFileById = async (courseId, fileId) => {
-    const state = store.getState().CourseReducer;
+    const state = store.getState().CourseReducer1;
 
     try {
         let response = await axios.post(`${baseURL}/admins/deleteNoteById`, {
@@ -220,7 +220,7 @@ export const deleteFileById = async (courseId, fileId) => {
 }
 
 export const checkIfFileExists = async (obj) => {
-    const state = store.getState().CourseReducer;
+    const state = store.getState().CourseReducer1;
 
     try {
         let response = await axios.post(`${baseURL}/admins/checkFiles`, obj, {
@@ -237,7 +237,7 @@ export const checkIfFileExists = async (obj) => {
 }
 export const getCertificateRequests = async () => {
     console.log("get My Courses Reached")
-    const state = store.getState().CourseReducer;
+    const state = store.getState().CourseReducer1;
     console.log(state)
     try {
         let response = await axios.get(`${baseURL}/admins/certificateRequests/${state.userDetails.email}`, {
@@ -254,7 +254,7 @@ export const getCertificateRequests = async () => {
 }
 
 export const deleteCourse = async (courseId) => {
-    const state = store.getState().CourseReducer;
+    const state = store.getState().CourseReducer1;
 
     try {
         let response = await axios.delete(`${baseURL}/admins/courses/${courseId}`, {
@@ -271,7 +271,7 @@ export const deleteCourse = async (courseId) => {
 }
 
 export const addQuiz = async (courseId, obj) => {
-    const state = store.getState().CourseReducer;
+    const state = store.getState().CourseReducer1;
     console.log(courseId, obj)
     try {
         let response = await axios.post(`${baseURL}/admins/addQuiz/${courseId}`, obj, {
