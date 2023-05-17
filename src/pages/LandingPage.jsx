@@ -108,7 +108,6 @@ export const LandingPage = () => {
   const [emailLoginDisable, setEmailLoginDisable] = useState("");
 
   const handleLogin = async () => {
-   
     try {
       var loginResponse = await login(signInObject);
       console.log("lklklk", loginResponse.data.data.split(",")[0]);
