@@ -27,7 +27,7 @@ export const getMyCourses = async (email, token) => {
                 'Authorization': `Bearer ${state.token}`
             }
         })
-        console.log(response.data.data)
+        console.log("=============== my courses data==========>",response.data.data)
         return response.data.data
     } catch (err) {
         throw new Error('Connection Refused')

@@ -36,7 +36,9 @@ export const Course = (props) => {
         // alert(props.name)
         switch (props.choice) {
             case 'Available Courses':
-                if (myState.coursesEnrolled.size>0&&myState.coursesEnrolled.has(props.id)) {
+                console.log("===========================>",myState.coursesEnrolled)
+                if (myState.coursesEnrolled.length!=myState.coursesEnrolled.filter(e=>e.c_id!=props.id).length) {
+                    
                     setSnackbar(true)
                     return
                 }

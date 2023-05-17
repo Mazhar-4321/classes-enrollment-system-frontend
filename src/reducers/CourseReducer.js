@@ -2,7 +2,7 @@ const initialState = {
     token: localStorage.getItem("token"),
     userRole: 'student',
     studentChoiceSelected: 'null',
-    coursesEnrolled: new Map(),
+    coursesEnrolled: [],
     userDetails: { firstName: null, lastName: null, email: null },
     testDetails: []
 
@@ -16,8 +16,11 @@ const CourseReducer = ((state = initialState, action) => {
             var data = action.value
             //myCourses
             console.log("all details of student", data);
-            var map = state.coursesEnrolled;
-            data.myCourses.forEach(e => map.set(e.c_id, e))
+            console.log("-------------- STATE----",state)
+            var map = state.coursesEnrolled;  
+              map = [];
+            console.log("------------------------------------>",map.size)
+            data.myCourses.forEach(e => map.push( e ))
             return {
                 ...state, coursesEnrolled: map
             }
@@ -52,7 +55,7 @@ const CourseReducer = ((state = initialState, action) => {
             if (tokenArray[0] === 'student') {
             
                 return {
-                    ...state, token: tokenArray[4], userRole: tokenArray[0], userDetails: { firstName: tokenArray[1], lastName: tokenArray[2], email: tokenArray[3] }
+                    ...state, token: tokenArray[4], userRole: tokenArray[0], userDetails: { firstName: tokenArray[1], lastName: tokenArray[2], email: tokenArray[3] },
                 }
               
             } else
@@ -63,8 +66,10 @@ const CourseReducer = ((state = initialState, action) => {
                 }
         case 'delteCourse':
             var id=action.value
-            var newMap=state.coursesEnrolled;
-            newMap.delete(id)
+       
+            var newMap=state.coursesEnrolled.filter(e => e.c_id != id);
+           // newMap.
+            // newMap.delete(id)
             return{
                 ...state,coursesEnrolled:newMap
             }
