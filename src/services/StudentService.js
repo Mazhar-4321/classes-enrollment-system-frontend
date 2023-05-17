@@ -3,7 +3,7 @@ import axios from "axios";
  // import {store} from '../store'
 const baseURL = 'http://localhost:3005/api/v1/'
 
-const state = store.getState().CourseReducer
+const state = store.getState().CourseReducer1
 
 
 export const getAllCourses = async (token) => {
@@ -20,10 +20,11 @@ export const getAllCourses = async (token) => {
     }
 }
 export const getMyCourses = async (email, token) => {
+    const state = store.getState().CourseReducer1
     try {
         let response = await axios.get(`${baseURL}/students/myCourses/${email}`, {
             headers: {
-                'Authorization': `Bearer ${token}`
+                'Authorization': `Bearer ${state.token}`
             }
         })
         console.log(response.data.data)
@@ -34,7 +35,7 @@ export const getMyCourses = async (email, token) => {
 }
 
 export const enrollInTheCourse = async (courseId) => {
-    const state = store.getState().CourseReducer
+    const state = store.getState().CourseReducer1
     console.log("mai hai user details", state.userDetails)
     try {
         let response = await axios.post(`${baseURL}/students/enroll`, {
@@ -54,7 +55,7 @@ export const enrollInTheCourse = async (courseId) => {
 }
 
 export const getQuiz = async (courseId) => {
-    const state = store.getState().CourseReducer
+    const state = store.getState().CourseReducer1
 
     try {
         let response = await axios.get(`${baseURL}/students/quiz/${courseId}`, {
@@ -70,7 +71,7 @@ export const getQuiz = async (courseId) => {
 }
 
 export const submitQuiz = async (courseId, obj) => {
-    const state = store.getState().CourseReducer
+    const state = store.getState().CourseReducer1
 
     try {
         let response = await axios.post(`${baseURL}/students/quiz/${courseId + "," + state.userDetails.email}`, { data: obj }, {
@@ -86,7 +87,7 @@ export const submitQuiz = async (courseId, obj) => {
 }
 
 export const getHighestMarks = async (courseId, obj) => {
-    const state = store.getState().CourseReducer
+    const state = store.getState().CourseReducer1
 
     try {
         let response = await axios.get(`${baseURL}/students/marks/${courseId + "," + state.userDetails.email}`, { data: obj }, {
@@ -102,7 +103,7 @@ export const getHighestMarks = async (courseId, obj) => {
 }
 
 export const cancelCourse = async (courseId) => {
-    const state = store.getState().CourseReducer
+    const state = store.getState().CourseReducer1
     console.log(courseId, state.userDetails.email)
     try {
         let response = await axios.post(`${baseURL}/students/cancelCourse/`, {

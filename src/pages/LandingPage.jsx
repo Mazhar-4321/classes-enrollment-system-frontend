@@ -65,7 +65,7 @@ const style3 = {
 export const LandingPage = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const myState = useSelector((state) => state.CourseReducer);
+  const myState = useSelector((state) => state.CourseReducer1);
   const [snackbar, setSnackbar] = useState(false);
   const [snackbarMessage, setSnackbarMessage] = useState("");
   const [snackbarSeverity, setSnackbarSeverity] = useState("");
@@ -108,9 +108,7 @@ export const LandingPage = () => {
   const [emailLoginDisable, setEmailLoginDisable] = useState("");
 
   const handleLogin = async () => {
-    if (myState.token != null) {
-      return;
-    }
+   
     try {
       var loginResponse = await login(signInObject);
       console.log("lklklk", loginResponse.data.data.split(",")[0]);
