@@ -253,6 +253,64 @@ export const getCertificateRequests = async () => {
     }
 }
 
+export const getQuizQuestions = async (courseId) => {
+    const state = store.getState().CourseReducer1;
+    try {
+        let response = await axios.get(`${baseURL}/admins/quiz/${courseId}`, {
+            headers: {
+                'Authorization': `Bearer ${state.token}`
+            }
+        })
+        return response.data.data
+    } catch (err) {
+        console.log(err)
+        throw new Error('Connection Refused')
+    }
+}
+
+export const updateQuestionById = async (questionId, questionObj) => {
+    const state = store.getState().CourseReducer1;
+    try {
+        let response = await axios.post(`${baseURL}/admins/updateQuestionById/${questionId}`, questionObj, {
+            headers: {
+                'Authorization': `Bearer ${state.token}`
+            }
+        })
+        return response.data.data
+    } catch (err) {
+        throw new Error('Connection Refused')
+    }
+}
+
+export const addQuestion = async (courseId, questionObj) => {
+    console.log(courseId, questionObj)
+    const state = store.getState().CourseReducer1;
+    try {
+        let response = await axios.post(`${baseURL}/admins/insertQuestion/${courseId}`, questionObj, {
+            headers: {
+                'Authorization': `Bearer ${state.token}`
+            }
+        })
+        return response.data.data
+    } catch (err) {
+        throw new Error('Connection Refused')
+    }
+}
+export const deleteQuestion = async (questionId) => {
+    const state = store.getState().CourseReducer1;
+
+    try {
+        let response = await axios.delete(`${baseURL}/admins/deleteQuestion/${questionId}`, {
+            headers: {
+                'Authorization': `Bearer ${state.token}`
+            }
+        })
+        return response.data.data
+    } catch (err) {
+        console.log(err)
+        throw new Error('Connection Refused')
+    }
+}
 export const deleteCourse = async (courseId) => {
     const state = store.getState().CourseReducer1;
 
