@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 
 export const MyProfile = () => {
 
-  const { firstName, lastName, email } = useSelector(state => state.CourseReducer.userDetails);
+  const { firstName, lastName, email } = useSelector(state => state.CourseReducer1.userDetails);
 
   return (
     <div className="originMyProfile">

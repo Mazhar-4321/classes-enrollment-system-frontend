@@ -11,7 +11,7 @@ const ProtectedRoute = ({ children }) => {
 };
 
 export const StudentProtectedRoute =({children})=>{
-  const state=store.getState().CourseReducer
+  const state=store.getState().CourseReducer1
   console.log("mai hu na",state)
   if(state.token!=null&&state.userRole==='student'){
     return children;
@@ -20,7 +20,7 @@ export const StudentProtectedRoute =({children})=>{
 }
 
 export const AdminProtectedRoute =({children})=>{
-  const state=store.getState().CourseReducer
+  const state=store.getState().CourseReducer1
   console.log("mai hu na",state)
   if(state.token!=null&&state.userRole==='admin'){
     return children;

@@ -18,7 +18,7 @@ import imj from "../images/online-education.png";
 import { GiBookshelf } from "react-icons/gi";
 
 export const StudentPage = () => {
-  const myState = useSelector((state) => state.CourseReducer);
+  const myState = useSelector((state) => state.CourseReducer1);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [availableCoursesList, setAvailableCoursesList] = useState({
@@ -204,7 +204,7 @@ export const StudentPage = () => {
                   <Grid item xs={3}>
                     <Course
                       choice={choice}
-                      disabled={myState.coursesEnrolled.has(e.c_id)}
+                      disabled={myState.coursesEnrolled.size>0&&myState.coursesEnrolled.has(e?.c_id)}
                       isStudent={true}
                       id={e.c_id}
                       name={e.name}
