@@ -103,12 +103,12 @@ export const CourseNotes = () => {
       const quizResponse = await getQuiz(location.state.id);
       console.log("quiz Response", quizResponse);
       setQuiz(quizResponse);
-      console.log(
-        myState.coursesEnrolled.get(location.state.id).notes.split(",")
-      );
+      
+       // myState.coursesEnrolled.get(location.state.id).notes.split(",")
+      
       setmyCoursesList((prevData) => ({
         ...prevData,
-        data: myState.coursesEnrolled.get(location.state.id).notes.split(","),
+        data: myState.coursesEnrolled.filter(e=>e.c_id===location.state.id)[0].notes.split(","),
       }));
       //    setmyCoursesList(prevData=>(
       //     {...prevData,data:myState.coursesEnrolled.get(location.state.id).notes.split(","))})

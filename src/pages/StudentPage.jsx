@@ -204,7 +204,7 @@ export const StudentPage = () => {
                   <Grid item xs={3}>
                     <Course
                       choice={choice}
-                      disabled={myState.coursesEnrolled.size>0&&myState.coursesEnrolled.has(e?.c_id)}
+                      disabled={myState.coursesEnrolled.filter(p=>p.c_id==e.c_id).length>0}
                       isStudent={true}
                       id={e.c_id}
                       name={e.name}

@@ -91,7 +91,7 @@ export function CourseDetail() {
 
 
   const handleEnrollment = async () => {
-    console.log(myState.coursesEnrolled)
+    
     try {
       var courseResponse = await enrollInTheCourse(location.state.id);
       if (courseResponse) {
