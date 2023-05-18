@@ -1,5 +1,5 @@
 import "../css/SuperUserList.css";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Button,
   List,
@@ -9,14 +9,27 @@ import {
 } from "@mui/material";
 
 import Flip from "react-reveal/Flip";
+import {
+  getAdminsRequestsRejection,
+  grantAdminRequestRejection,
+} from "../services/SuperService";
 
 function SuperUserListDisapprove() {
-  const [user, setUser] = useState([
-    { id: 1, name: "Aarav Patel", email: "aarav.patel@example.com" },
-    { id: 2, name: "Aditi Sharma", email: "aditi.sharma@example.com" },
-    { id: 3, name: "Arjun Singh", email: "arjun.singh@example.com" },
-  
-  ]);
+  const [AdminsRequests, setAdminsRequests] = useState([]);
+
+  useEffect(() => {
+    getAdminsRequestsRejection().then((res) => {
+      setAdminsRequests(res.data.data);
+    });
+  }, []);
+
+  const handleDispproval = async (email) => {
+    console.log("===== handleDispproval========", email);
+    await grantAdminRequestRejection(email);
+    getAdminsRequestsRejection().then((res) => {
+      setAdminsRequests(res.data.data);
+    });
+  };
 
   return (
     <div className="superOriginBackGround">
@@ -25,14 +38,19 @@ function SuperUserListDisapprove() {
           <h2 style={{ color: " #1c266e" }}> Revoke Access</h2>
           <div className="ListOfDetails">
             <List>
-              {user.map((user) => (
-                <ListItem key={user.id}>
-                  <ListItemText primary={user.name} secondary={user.email} />
+              {AdminsRequests.map((user) => (
+                <ListItem>
+                  <ListItemText
+                    primary={user.firstName + " " + user.lastName}
+                    secondary={user.email}
+                  />
                   {
                     <ListItemSecondaryAction>
                       <Button
                         variant="contained"
-                        onClick={() => alert("Approved")}
+                        onClick={() => {
+                          handleDispproval(user.email);
+                        }}
                       >
                         Disapprove Privilige
                       </Button>

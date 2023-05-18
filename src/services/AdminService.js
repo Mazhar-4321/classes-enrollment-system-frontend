@@ -1,5 +1,5 @@
 import axios from "axios";
-  import store from '../store'
+import store from '../store'
 
 const baseURL = 'http://localhost:3005/api/v1/'
 
