@@ -13,6 +13,9 @@ import { StudentPage } from "./pages/StudentPage";
 import { useSelector } from "react-redux";
 import { CourseNotes } from "./pages/CourseNotes";
 import AdminDashBoard from "./pages/AdminDashBoard";
+import SuperUser from "./pages/SuperUser";
+
+
 const AppWrapper = () => {
 
   return (
@@ -37,6 +40,7 @@ function App() {
             <Route path="/StudentPage" element={<StudentProtectedRoute> <StudentPage /> </StudentProtectedRoute>} />
             <Route path="/CourseNotes" element={<StudentProtectedRoute> <CourseNotes /></StudentProtectedRoute>} />
             <Route path='/AdminPage' element={<AdminProtectedRoute><AdminDashBoard /></AdminProtectedRoute>} />
+            <Route path='/SuperUser'  element={<SuperUser /> } />
           </Routes>
 
         </BrowserRouter>
