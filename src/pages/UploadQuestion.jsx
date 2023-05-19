@@ -229,6 +229,15 @@ const QuestionForm = () => {
     reader.readAsText(file)
 
   };
+  const undo =()=>{
+    setNewQuestion("");
+    setNewOption1("");
+    setNewOption2("");
+    setNewOption3("");
+    setNewOption4("");
+    setNewCorrectAnswer("");
+    
+  }
   const checkForSimilarOptions = (options) => {
     var map = new Map();
     map.set(options[0], 1);
@@ -308,7 +317,7 @@ const QuestionForm = () => {
       </Snackbar>
 
       <div className="QuestionForm">
-        <div style={{ width: '100%', marginLeft: "2rem", height: '10vh', display: 'flex', flexDirection: 'row', gap: '5px', flexWrap: 'wrap' }}>
+        <div style={{ width: '100%', marginLeft: "2rem", height: 'auto', display: 'flex', flexDirection: 'row', gap: '5px', flexWrap: 'wrap' }}>
           {
             questions.map(question1 => (<><Tooltip title={`Question:${question1.question},Answer:${question1.answer},options:${question1.options}`}>
               <Chip
@@ -438,7 +447,9 @@ const QuestionForm = () => {
                   <Button className="AddButton" onClick={handleAddQuestion} variant="contained">
                     Add question
                   </Button>
-
+                  <Button className="AddButton" onClick={undo} variant="contained">
+                    Undo
+                  </Button>
                 </div>
               </div>
 

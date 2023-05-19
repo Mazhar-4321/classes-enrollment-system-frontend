@@ -1,7 +1,7 @@
 import axios from "axios";
   import store from '../store';
  // import {store} from '../store'
-const baseURL = 'http://localhost:3005/api/v1/'
+const baseURL = 'http://localhost:3006/api/v1/'
 
 const state = store.getState().CourseReducer1
 
@@ -90,11 +90,12 @@ export const getHighestMarks = async (courseId, obj) => {
     const state = store.getState().CourseReducer1
 
     try {
-        let response = await axios.get(`${baseURL}/students/marks/${courseId + "," + state.userDetails.email}`, { data: obj }, {
+        let response = await axios.get(`${baseURL}/students/marks/${courseId},${state.userDetails.email}`,
+         {
             headers: {
                 'Authorization': `Bearer ${state.token}`
             }
-        })
+        }, { obj })
         console.log(response)
         return response.data.data
     } catch (err) {
