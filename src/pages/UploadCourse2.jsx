@@ -157,7 +157,7 @@ export function UploadCourse2() {
   const handleOpen = () => {
     setOpen(true);
   };
-  const [value, setValue] = React.useState(dayjs(`${new Date().getFullYear()}-${new Date().getMonth()+1}-${new Date().getDate()}`));
+  const [value, setValue] = React.useState(dayjs(`${new Date().getFullYear()}-${new Date().getMonth() + 1}-${new Date().getDate()}`));
   const uploadImage = async (files) => {
     console.log("====== IN UPLOAD IMAGE ======");
     for (const [key, file] of Object.entries(files)) {
@@ -252,7 +252,8 @@ export function UploadCourse2() {
     var year = new Date(date).getFullYear();
     var month = new Date(date).getMonth();
     var day = new Date(date).getDate();
-    if (year < currentYear || month < currentMonth || day < currentDay) {
+
+    if (year == currentYear && month == currentMonth && day <= currentDay) {
       setSnackbar(true);
       setSnackbarMessage("Please Select A Valid Date");
       setSnackbarSeverity("error");

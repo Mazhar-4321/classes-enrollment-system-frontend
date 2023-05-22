@@ -63,20 +63,20 @@ export const CourseNotes = () => {
     data: [],
   });
   const [border, setBorder] = useState({
-    notes: "2px solid #fff",
+    notes: "2px solid black",
     takeQuiz: null,
     cancelCourse: null,
     claimCertificate: null,
   });
 
   function handleVideoFetching() {
-    const key = location.state.url ; 
+    const key = location.state.url;
 
 
     console.log("URL KEY IS ------------>", key);
 
     fetch(
-    
+
       ` https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet%2CcontentDetails&playlistId=${key}&key=AIzaSyCtFHWi6FkcJJez6t9cg0CPzxa5Cv4gF98 `
     )
       .then((data) => data.json())
@@ -96,19 +96,19 @@ export const CourseNotes = () => {
       });
   }
   useEffect(() => {
-   
+
     handleVideoFetching()
 
     const dbCall = async () => {
       const quizResponse = await getQuiz(location.state.id);
       console.log("quiz Response", quizResponse);
       setQuiz(quizResponse);
-      
-       // myState.coursesEnrolled.get(location.state.id).notes.split(",")
-      
+
+      // myState.coursesEnrolled.get(location.state.id).notes.split(",")
+
       setmyCoursesList((prevData) => ({
         ...prevData,
-        data: myState.coursesEnrolled.filter(e=>e.c_id===location.state.id)[0].notes.split(","),
+        data: myState.coursesEnrolled.filter(e => e.c_id === location.state.id)[0].notes.split(","),
       }));
       //    setmyCoursesList(prevData=>(
       //     {...prevData,data:myState.coursesEnrolled.get(location.state.id).notes.split(","))})
@@ -134,10 +134,10 @@ export const CourseNotes = () => {
       // })
 
     };
-  
+
     dbCall();
   }, []);
-  const playBackdrop = () => {};
+  const playBackdrop = () => { };
   const [choice, setChoice] = useState("Notes");
   const changeFilterValue = (event) => {
     // setFilter(event.target.value);
@@ -156,13 +156,13 @@ export const CourseNotes = () => {
         setChoice("Notes");
         setBorder((prevBorder) => ({
           ...prevBorder,
-          notes: "2px solid #fff",
+          notes: "2px solid black",
         }));
         break;
       case "Take Quiz":
         setBorder((prevBorder) => ({
           ...prevBorder,
-          takeQuiz: "2px solid #fff",
+          takeQuiz: "2px solid black",
         }));
         setChoice("Take Quiz");
         break;
@@ -179,7 +179,7 @@ export const CourseNotes = () => {
         }
         setBorder((prevBorder) => ({
           ...prevBorder,
-          cancelCourse: "2px solid #fff",
+          cancelCourse: "2px solid black",
         }));
         break;
       case "Claim Certificate":
@@ -229,7 +229,7 @@ export const CourseNotes = () => {
         console.log("ress", getMarks);
         setBorder((prevBorder) => ({
           ...prevBorder,
-          claimCertificate: "2px solid #fff",
+          claimCertificate: "2px solid black",
         }));
         break;
     }
@@ -288,12 +288,16 @@ export const CourseNotes = () => {
           </Paper>
         </div>
         <div className="user-activities">
-          <div onClick={() => changeChoice("Notes")} className="icon-value">
+          <div
+            style={{ border: border.notes, cursor: "pointer" }}
+            onClick={() => changeChoice("Notes")} className="icon-value">
             {/* <AccountBalanceIcon /> */}
             <DescriptionIcon fontSize="large" />
             <div>Notes</div>
           </div>
-          <div onClick={() => changeChoice("Take Quiz")} className="icon-value">
+          <div
+            style={{ border: border.takeQuiz, cursor: "pointer" }}
+            onClick={() => changeChoice("Take Quiz")} className="icon-value">
             <QuizIcon fontSize="large" />
             <div>Take Quiz</div>
           </div>
@@ -336,19 +340,21 @@ export const CourseNotes = () => {
             )}
 
             <div className="videoSection">
-              
+
               <h2 style={{ color: " #8739F9" }}>Video Tutorials</h2>
 
               <div className="videoList">
                 {sampleurl.map((url) => (
 
-                <div className="videoFrame">
-                  <ReactPlayer height={"100%"} width={"100%"} controls className="player" url={url} />
-      
+                  <div className="videoFrame">
+                    <ReactPlayer height={"100%"} width={"100%"} controls className="player" url={url} />
+                   
+
+
                   </div>
 
 
-                 
+
                 ))}
               </div>
             </div>
