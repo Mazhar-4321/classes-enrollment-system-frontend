@@ -1,0 +1,30 @@
+.Verification{
+display: flex;
+justify-content: center;
+align-items: center;
+background-color: #8739F9;
+height: 100vh;
+width: 100vw;
+}
+
+.boxcode{
+    background-color: #F2F5F5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    row-gap: 2rem;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+    height: 40vh;
+    width: 40vw;
+    border-radius: 10px;
+}
+
+
+/* sx={{ width: "100vw", typography: "body1" }} */
+
+.originSuper{
+    border: 2px solid red;
+    background-color: #8739F9;
+
+}
