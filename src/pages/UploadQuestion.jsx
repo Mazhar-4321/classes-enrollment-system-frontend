@@ -24,9 +24,7 @@ import {
 import { addQuestion, addQuiz, deleteQuestion, getMyCourses, getQuizQuestions, updateQuestionById } from "../services/AdminService";
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
-import { MultiMulti, TrueFalse } from "../components/TrueFalse";
-import { MultipleChoice } from "../components/MultiMulti";
-import { QAndA } from "../components/QAndA";
+
 let questionsMap = new Map();
 
 const QuestionForm = () => {
@@ -625,7 +623,55 @@ const QuestionForm = () => {
                     </Box>
                   </Popper>
                 </div>
-                : <></>
+
+              </div>
+
+            </>
+            :
+            mode === 'json' && course != '' ?
+              <div style={{ width: '100%', height: '200px', display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
+
+                <label style={{ textAlign: 'center', border: '1px solid rgb(0,0,0,0.5', background: '#1976D2', borderRadius: '5px', color: 'white', padding: '5px 5px 5px 5px', cursor: 'pointer' }} for="img">Import .json File</label>
+                <input style={{ display: 'none' }} type='file' id='img' onChange={handleSubmit}>
+                </input>
+                <Button sx={{ marginLeft: 5 }} aria-describedby={id} variant="outlined" type="button" onMouseLeave={handleClick} onMouseEnter={handleClick}>
+                  See Pattern
+                </Button>
+                <Popper id={id} open={open1} anchorEl={anchorEl}>
+                  <Box sx={{ border: 1, p: 1, bgcolor: 'background.paper' }}>
+
+                  <text>
+<br />
+[<br />
+&#123;<br />
+ question:What is Your Name,
+<br />
+answer:a,
+<br />
+options:[a,b,c,d]
+<br />
+&#125;,
+<br />
+&#123;<br />
+ question:What is his Name,
+<br />
+answer:b,
+<br />
+options:[a,b,c,d]
+<br />
+&#125;,
+<br />
+...
+<br />
+]
+
+</text>
+
+                  </Box>
+                </Popper>
+              </div>
+              : <></>
+
           }
         </div>
       </div>
@@ -634,3 +680,7 @@ const QuestionForm = () => {
 };
 
 export default QuestionForm;
+
+
+
+

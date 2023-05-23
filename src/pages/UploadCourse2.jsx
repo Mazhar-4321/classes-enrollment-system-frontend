@@ -252,7 +252,6 @@ export function UploadCourse2() {
     var year = new Date(date).getFullYear();
     var month = new Date(date).getMonth();
     var day = new Date(date).getDate();
-
     if (year == currentYear && month == currentMonth && day <= currentDay) {
       setSnackbar(true);
       setSnackbarMessage("Please Select A Valid Date");
@@ -394,7 +393,7 @@ export function UploadCourse2() {
                       </Select>
                     </FormControl>
                   </Box>
-                  <input
+                  {/* <input
                     style={{ display: "none" }}
                     type="image"
                     multiple
@@ -402,7 +401,7 @@ export function UploadCourse2() {
                   ></input>
                   <label className="uploadCourseImage">
                     Click to upload Course Image
-                  </label>
+                  </label> */}
                 </div>
                 <div className="tfRow1">
                   <TextField
