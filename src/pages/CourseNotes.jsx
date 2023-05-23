@@ -160,6 +160,9 @@ export const CourseNotes = () => {
         }));
         break;
       case "Take Quiz":
+        const quizResponse = await getQuiz(location.state.id);
+        console.log("quiz Response", quizResponse);
+        setQuiz(quizResponse);
         setBorder((prevBorder) => ({
           ...prevBorder,
           takeQuiz: "2px solid black",
@@ -185,28 +188,28 @@ export const CourseNotes = () => {
       case "Claim Certificate":
         setChoice("Claim Certificate");
         var getMarks = await getHighestMarks(location.state.id);
-        console.log("got marks", getMarks);
-        if (getMarks == "Fail") {
+        if (getMarks == -1) {
           setSnackbar(true);
-          setSnackbarMessage("Certificate Can't be downloaded");
+          setSnackbarMessage("Please Attend The Quiz ");
           setSnackbarSeverity("error");
           return;
         }
-        if (getMarks == "Success") {
-          console.log("Pass", getMarks[0].max - 1);
-          if (getMarks[0] > 8) {
-            grade = "A";
-          }
-          if (getMarks[0] > 7 && getMarks[0] <= 8) {
-            grade = "B";
-          }
-          if (getMarks[0] > 6 && getMarks[0] <= 7) {
-            grade = "C";
-          }
-          if (getMarks[0] < 6) {
-            grade = "D";
-          }
-          var element = document.getElementById("domEl");
+        if (getMarks == -2) {
+          setSnackbar(true);
+          setSnackbarMessage("Your Current Marks < Prev Best");
+          setSnackbarSeverity("error");
+          return;
+        }
+        if (getMarks < 8) {
+         
+            setSnackbar(true);
+            setSnackbarMessage("Minimum 80% is Required To Download Certificate");
+            setSnackbarSeverity("error");
+            return;
+          
+        }
+        if(getMarks>=8){
+             var element = document.getElementById("domEl");
           element.style.display = "block";
           // html2pdf(element)
           var opt = {
@@ -220,13 +223,49 @@ export const CourseNotes = () => {
           setTimeout(() => {
             element.style.display = "none";
           }, 10);
-        } else {
-          setSnackbar(true);
-          setSnackbarMessage("Minimum 80% Required To Download Certificate");
-          setSnackbarSeverity("error");
-          return;
         }
-        console.log("ress", getMarks);
+        // console.log("got marks", getMarks);
+        // if (getMarks == "Fail") {
+        //   setSnackbar(true);
+        //   setSnackbarMessage("Certificate Can't be downloaded");
+        //   setSnackbarSeverity("error");
+        //   return;
+        // }
+        // if (getMarks == "Success") {
+        //   console.log("Pass", getMarks[0].max - 1);
+        //   if (getMarks[0] > 8) {
+        //     grade = "A";
+        //   }
+        //   if (getMarks[0] > 7 && getMarks[0] <= 8) {
+        //     grade = "B";
+        //   }
+        //   if (getMarks[0] > 6 && getMarks[0] <= 7) {
+        //     grade = "C";
+        //   }
+        //   if (getMarks[0] < 6) {
+        //     grade = "D";
+        //   }
+        //   var element = document.getElementById("domEl");
+        //   element.style.display = "block";
+        //   // html2pdf(element)
+        //   var opt = {
+        //     margin: 0,
+        //     filename: `${myState.userDetails.firstName}`,
+        //     image: { type: "jpeg", quality: 1 },
+        //     html2canvas: { scale: 2 },
+        //     jsPDF: { unit: "in", format: "letter", orientation: "portrait" },
+        //   };
+        //   html2pdf().set(opt).from(element).save();
+        //   setTimeout(() => {
+        //     element.style.display = "none";
+        //   }, 10);
+        // } else {
+        //   setSnackbar(true);
+        //   setSnackbarMessage("Minimum 80% Required To Download Certificate");
+        //   setSnackbarSeverity("error");
+        //   return;
+        // }
+        // console.log("ress", getMarks);
         setBorder((prevBorder) => ({
           ...prevBorder,
           claimCertificate: "2px solid black",
@@ -348,7 +387,7 @@ export const CourseNotes = () => {
 
                   <div className="videoFrame">
                     <ReactPlayer height={"100%"} width={"100%"} controls className="player" url={url} />
-                   
+
 
 
                   </div>
