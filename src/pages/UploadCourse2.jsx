@@ -157,7 +157,7 @@ export function UploadCourse2() {
   const handleOpen = () => {
     setOpen(true);
   };
-  const [value, setValue] = React.useState(dayjs(`${new Date().getFullYear()}-${new Date().getMonth()+1}-${new Date().getDate()}`));
+  const [value, setValue] = React.useState(dayjs(`${new Date().getFullYear()}-${new Date().getMonth() + 1}-${new Date().getDate()}`));
   const uploadImage = async (files) => {
     console.log("====== IN UPLOAD IMAGE ======");
     for (const [key, file] of Object.entries(files)) {

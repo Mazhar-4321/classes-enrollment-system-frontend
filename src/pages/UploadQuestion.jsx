@@ -5,16 +5,19 @@ import MenuItem from '@mui/material/MenuItem';
 import Box from '@mui/material/Box';
 import Select from '@mui/material/Select';
 import Backdrop from '@mui/material/Backdrop';
+import FormGroup from '@mui/material/FormGroup';
 import CircularProgress from '@mui/material/CircularProgress';
 import Chip from '@mui/material/Chip';
 import Popper from '@mui/material/Popper';
 import Tooltip from '@mui/material/Tooltip';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import FormHelperText from '@mui/material/FormHelperText';
+import Checkbox from '@mui/material/Checkbox';
 import {
   Button,
   TextField,
   Radio,
   RadioGroup,
-  FormControlLabel,
   FormControl,
   FormLabel,
 } from "@mui/material";
@@ -38,6 +41,7 @@ const QuestionForm = () => {
   const [quizId, setQuizId] = useState(null);
   const [questionId, setQuestionId] = useState(null)
   const [course, setCourse] = useState('');
+  const [category, setCategory] = useState('');
   const [mode, setMode] = useState('')
   const [courses, setCourses] = useState([])
   const [count, setCount] = useState(0);
@@ -72,6 +76,10 @@ const QuestionForm = () => {
 
   const handleChange1 = (event) => {
     setMode(event.target.value)
+  }
+  const handleChange2 = (event) => {
+    console.log(event.target.value)
+    setCategory(event.target.value)
   }
   const showSnackBar = async (message, severity) => {
     setSnackbar(true);
@@ -230,14 +238,14 @@ const QuestionForm = () => {
     reader.readAsText(file)
 
   };
-  const undo =()=>{
+  const undo = () => {
     setNewQuestion("");
     setNewOption1("");
     setNewOption2("");
     setNewOption3("");
     setNewOption4("");
     setNewCorrectAnswer("");
-    
+
   }
   const checkForSimilarOptions = (options) => {
     var map = new Map();
@@ -361,97 +369,261 @@ const QuestionForm = () => {
               {courses.map(e => <MenuItem value={e.c_id}>{e.name}</MenuItem>)}
             </Select>
           </FormControl>
+          {
+            mode === 'manual' &&
+            <FormControl fullWidth>
+              <InputLabel id="demo-simple-select-label">Category</InputLabel>
+              <Select
+                labelId="demo-simple-select-label"
+                id="demo-simple-select"
+                value={category}
+                label="Age"
+                onChange={handleChange2}
+              >
+                <MenuItem value={"Q&A"}>Q&A</MenuItem>
+                <MenuItem value={"multiple Choice single select"}>Multiple Choice And Single Select</MenuItem>
+                <MenuItem value={"multiple Choice multiple select"}>Multiple Choice And Multiple Select</MenuItem>
+                <MenuItem value={"true false"}>true and false</MenuItem>
+
+              </Select>
+            </FormControl>
+          }
 
         </Box>
         <div className="QuestinSection">
-          {mode === 'manual' && course != '' ?
-            <>
-              <div className="EnterQuestions">
-                <TextField
-                  required
-                  id="question"
-                  label="Question"
-                  value={newQuestion}
-                  onChange={(e) => setNewQuestion(e.target.value)}
-                  fullWidth
-                  margin="normal"
-                />
-                <TextField
-                  required
-                  id="option1"
-                  label="Option 1"
-                  value={newOption1}
-                  onChange={(e) => setNewOption1(e.target.value)}
-                  fullWidth
-                  margin="normal"
-                />
-                <TextField
-                  required
-                  id="option2"
-                  label="Option 2"
-                  value={newOption2}
-                  onChange={(e) => setNewOption2(e.target.value)}
-                  fullWidth
-                  margin="normal"
-                />
-                <TextField
-                  required
-                  id="option3"
-                  label="Option 3"
-                  value={newOption3}
-                  onChange={(e) => setNewOption3(e.target.value)}
-                  fullWidth
-                  margin="normal"
-                />
-                <TextField
-                  required
-                  id="option4"
-                  label="Option 4"
-                  value={newOption4}
-                  onChange={(e) => setNewOption4(e.target.value)}
-                  fullWidth
-                  margin="normal"
-                />
-              </div>
-              <div className="CorrectAnswer">
-                <FormControl component="fieldset" margin="normal">
-                  <FormLabel component="legend">Correct Answer</FormLabel>
-                  <RadioGroup
-                    aria-label="correct-answer"
-                    name="correct-answer"
-                    value={newCorrectAnswer}
-                    onChange={handleOptionChange}
-                  >
-                    <FormControlLabel
-                      value={0}
-                      control={<Radio />}
+          {
+            mode === 'manual' && course != ''  ?
+              // category == 'multiple Choice single select' ?
+                <>
+
+                  <div className="EnterQuestions">
+                    <TextField
+                      required
+                      id="question"
+                      label="Question"
+                      value={newQuestion}
+                      onChange={(e) => setNewQuestion(e.target.value)}
+                      fullWidth
+                      margin="normal"
+                    />
+                    <TextField
+                      required
+                      id="option1"
                       label="Option 1"
+                      value={newOption1}
+                      onChange={(e) => setNewOption1(e.target.value)}
+                      fullWidth
+                      margin="normal"
                     />
-                    <FormControlLabel
-                      value={1}
-                      control={<Radio />}
+                    <TextField
+                      required
+                      id="option2"
                       label="Option 2"
+                      value={newOption2}
+                      onChange={(e) => setNewOption2(e.target.value)}
+                      fullWidth
+                      margin="normal"
                     />
-                    <FormControlLabel
-                      value={2}
-                      control={<Radio />}
+                    <TextField
+                      required
+                      id="option3"
                       label="Option 3"
+                      value={newOption3}
+                      onChange={(e) => setNewOption3(e.target.value)}
+                      fullWidth
+                      margin="normal"
                     />
-                    <FormControlLabel
-                      value={3}
-                      control={<Radio />}
+                    <TextField
+                      required
+                      id="option4"
                       label="Option 4"
+                      value={newOption4}
+                      onChange={(e) => setNewOption4(e.target.value)}
+                      fullWidth
+                      margin="normal"
                     />
-                  </RadioGroup>
-                </FormControl>
-                <div className="ButtonGroup">
-                  <Button className="AddButton" onClick={handleAddQuestion} variant="contained">
-                    Add question
+                  </div>
+                  <div className="CorrectAnswer">
+                    <FormControl component="fieldset" margin="normal">
+                      <FormLabel component="legend">Correct Answer</FormLabel>
+                      <RadioGroup
+                        aria-label="correct-answer"
+                        name="correct-answer"
+                        value={newCorrectAnswer}
+                        onChange={handleOptionChange}
+                      >
+                        <FormControlLabel
+                          value={0}
+                          control={<Radio />}
+                          label="Option 1"
+                        />
+                        <FormControlLabel
+                          value={1}
+                          control={<Radio />}
+                          label="Option 2"
+                        />
+                        <FormControlLabel
+                          value={2}
+                          control={<Radio />}
+                          label="Option 3"
+                        />
+                        <FormControlLabel
+                          value={3}
+                          control={<Radio />}
+                          label="Option 4"
+                        />
+                      </RadioGroup>
+                    </FormControl>
+                    <div className="ButtonGroup">
+                      <Button className="AddButton" onClick={handleAddQuestion} variant="contained">
+                        Add question
+                      </Button>
+                      <Button className="AddButton" onClick={undo} variant="contained">
+                        Undo
+                      </Button>
+                    </div>
+                  </div>
+
+                </>
+                // <MultipleChoice checkbox={false} />
+                // : category == 'multiple Choice multiple select' ?
+                //   // <>
+                //   //    <div className="EnterQuestions">
+                //   //   <TextField
+                //   //     required
+                //   //     id="question"
+                //   //     label="Question"
+                //   //     value={newQuestion}
+                //   //     onChange={(e) => setNewQuestion(e.target.value)}
+                //   //     fullWidth
+                //   //     margin="normal"
+                //   //   />
+                //   //   <TextField
+                //   //     required
+                //   //     id="option1"
+                //   //     label="Option 1"
+                //   //     value={newOption1}
+                //   //     onChange={(e) => setNewOption1(e.target.value)}
+                //   //     fullWidth
+                //   //     margin="normal"
+                //   //   />
+                //   //   <TextField
+                //   //     required
+                //   //     id="option2"
+                //   //     label="Option 2"
+                //   //     value={newOption2}
+                //   //     onChange={(e) => setNewOption2(e.target.value)}
+                //   //     fullWidth
+                //   //     margin="normal"
+                //   //   />
+                //   //   <TextField
+                //   //     required
+                //   //     id="option3"
+                //   //     label="Option 3"
+                //   //     value={newOption3}
+                //   //     onChange={(e) => setNewOption3(e.target.value)}
+                //   //     fullWidth
+                //   //     margin="normal"
+                //   //   />
+                //   //   <TextField
+                //   //     required
+                //   //     id="option4"
+                //   //     label="Option 4"
+                //   //     value={newOption4}
+                //   //     onChange={(e) => setNewOption4(e.target.value)}
+                //   //     fullWidth
+                //   //     margin="normal"
+                //   //   />
+                //   // </div>
+                //   // <div className="CorrectAnswer">
+                //   //   <FormControl component="fieldset" margin="normal">
+                //   //     <FormLabel component="legend">Correct Answer</FormLabel>
+                //   //     <RadioGroup
+                //   //       aria-label="correct-answer"
+                //   //       name="correct-answer"
+                //   //       value={newCorrectAnswer}
+                //   //       onChange={handleOptionChange}
+                //   //     >
+                //   //       <FormControlLabel
+                //   //         value={0}
+                //   //         control={<Checkbox />}
+                //   //         label="Option 1"
+                //   //       />
+                //   //       <FormControlLabel
+                //   //         value={1}
+                //   //         control={<Checkbox />}
+                //   //         label="Option 2"
+                //   //       />
+                //   //       <FormControlLabel
+                //   //         value={2}
+                //   //         control={<Checkbox />}
+                //   //         label="Option 3"
+                //   //       />
+                //   //       <FormControlLabel
+                //   //         value={3}
+                //   //         control={<Checkbox />}
+                //   //         label="Option 4"
+                //   //       />
+                //   //     </RadioGroup>
+                //   //   </FormControl>
+                //   //   <div className="ButtonGroup">
+                //   //     <Button className="AddButton" onClick={handleAddQuestion} variant="contained">
+                //   //       Add question
+                //   //     </Button>
+                //   //     <Button className="AddButton" onClick={undo} variant="contained">
+                //   //       Undo
+                //   //     </Button>
+                //   //   </div>
+                //   // </div>
+
+                //   // </>
+                //   <MultipleChoice checkbox={true} />
+                //   : category == 'Q&A' ?
+                //     <><QAndA /></> :
+                //     <> <TrueFalse /></>
+              :
+              mode === 'json'  ?
+                <div style={{ width: '100%', height: '200px', display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center' }}>
+
+                  <label style={{ textAlign: 'center', border: '1px solid rgb(0,0,0,0.5', background: '#1976D2', borderRadius: '5px', color: 'white', padding: '5px 5px 5px 5px', cursor: 'pointer' }} for="img">Import .json File</label>
+                  <input style={{ display: 'none' }} type='file' id='img' onChange={handleSubmit}>
+                  </input>
+                  <Button sx={{ marginLeft: 5 }} aria-describedby={id} variant="outlined" type="button" onMouseLeave={handleClick} onMouseEnter={handleClick}>
+                    See Pattern
                   </Button>
-                  <Button className="AddButton" onClick={undo} variant="contained">
-                    Undo
-                  </Button>
+                  <Popper id={id} open={open1} anchorEl={anchorEl}>
+                    <Box sx={{ border: 1, p: 1, bgcolor: 'background.paper' }}>
+
+                      <text>
+                        <br />
+                        [<br />
+                        &#123;<br />
+                        question:What is Your Name,
+                        <br />
+                        answer:a,
+                        <br />
+                        options:[a,b,c,d]
+                        <br />
+                        &#125;,
+                        <br />
+                        &#123;<br />
+                        question:What is his Name,
+                        <br />
+                        answer:b,
+                        <br />
+                        options:[a,b,c,d]
+                        <br />
+                        &#125;,
+                        <br />
+                        ...
+                        <br />
+                        ]
+                      </text>
+
+                    </Box>
+                  </Popper>
                 </div>
+
               </div>
 
             </>
@@ -499,6 +671,7 @@ options:[a,b,c,d]
                 </Popper>
               </div>
               : <></>
+
           }
         </div>
       </div>
