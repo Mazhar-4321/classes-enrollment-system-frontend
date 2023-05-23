@@ -30,9 +30,9 @@ export default function LabTabs() {
   };
 
   return (
-    <Box classname sx={{ width: '100vw', typography: 'body1' }}>
-      <TabContext value={value}>
-        <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+    <Box classname sx={{ width: '100%', typography: 'body1',overflowX:'hidden' }}>
+      <TabContext value={value} >
+        <Box sx={{ borderBottom: 1, borderColor: 'divider',overflowX:'hidden' }}>
           <TabList centered flexContainer sx={{ width: '100vw', typography: 'body1' }} onChange={handleChange} aria-label="lab API tabs example">
             <Tab label="Dashboard" value="1" />
             <Tab label="Upload/Edit Course" value="2" />
