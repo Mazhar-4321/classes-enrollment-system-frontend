@@ -123,12 +123,13 @@ export function UploadCourse2() {
         ...prevObject,
         courseName: courseDetails[0].name,
         courseDescription: courseDetails[0].course_description,
-        lastDayToEnroll: courseDetails[0].name,
+        lastDayToEnroll: courseDetails[0].lastDate,
         duration: courseDetails[0].duration,
         instructorName: courseDetails[0].instructor,
         url: courseDetails[0].url,
         fee: courseDetails[0].fee,
       }));
+      setValue(dayjs(courseDetails[0].lastDate))
       if (courseDetails[0].notes) {
         var array = courseDetails[0].notes.split(",");
         var newArray = array.map((e) => {
