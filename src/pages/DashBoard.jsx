@@ -51,6 +51,11 @@ useEffect(() => {
     const courses = response;
     const courseWithLeastSeats = courses.sort((a, b) => parseInt(a.seatsLeft) - parseInt(b.seatsLeft))[0];
     console.log('Course with least seats left:', courseWithLeastSeats);
+
+    if(courseWithLeastSeats == null)
+    { console.log("ITS EMPTY")  
+    settrending ("NA") }
+    else
     settrending(courseWithLeastSeats.name)
  
     console.log ("=========== total students ===============>",response2[0]["COUNT( role_name )"])
