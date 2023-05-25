@@ -1,4 +1,8 @@
-
+//import Header from "../components/Header.jsx";
+import { Box, Grid } from "@mui/material";
+import CourseCard from "../components/CourseCard.jsx"
+import { Container } from "@mui/material";
+//import Pie from "../components/PieGraph.js";
 import "../css/DashBoard.css"
 import { useEffect, useState } from "react";
 import { getDashboardData 
@@ -6,7 +10,7 @@ import { getDashboardData
   , getDashboardDatabox2
   , getDashboardDatabox3 } from "../services/AdminService.js";
 import { Bar, Line } from 'react-chartjs-2';
-
+import Chart from 'chart.js/auto';
 
 
 

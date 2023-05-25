@@ -1,5 +1,5 @@
 import axios from "axios";
-const baseURL = 'http://localhost:3005/api/v1'
+const baseURL = 'http://localhost:3006/api/v1'
 
 
 export const registerUser = async (obj) => {
